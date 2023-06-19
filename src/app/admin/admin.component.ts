@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class AppComponent {
-  title = 'Project1';
+export class AdminComponent {
   sideNavStatus:boolean=false;
   toggleSideNav() {
     this.sideNavStatus = !this.sideNavStatus;
   }
+
 }

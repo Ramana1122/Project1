@@ -1,0 +1,90 @@
+<div class="c1">
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">     
+          <div class="card-header">
+            <h4 class="card-title">Employee Name: {{ Employees['Employee Name'] }}</h4>
+          </div>
+
+            <div class="card-body"> 
+              <div class="card-content">
+                <p><strong>Employee ID:</strong> {{ Employees['Employee ID'] }}</p>
+            <p><strong>Employee Name:</strong> {{ Employees['Employee Name']}}</p>
+            <p><strong>Manager Name:</strong> {{ Employees['Reporting Manager'] }}</p>
+          </div>
+            <hr> 
+            </div>    
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <h2>My Peers</h2>
+    <!-- <table class = 'table table-trapped '> -->
+      <table class="table table-striped table-bordered">
+
+        <thead>
+            <tr>
+                <th>Employee Name </th>
+                
+                <th>Mail Id</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                <tr *ngFor="let employee of Employees2 | team:Employees['Employee Name']" >
+                  
+                    <td>{{ employee['Employee Name'] }}</td>
+                   
+                    <td>{{ employee['Mail Id'] }}</td>
+                    
+                    <td>
+                    <button (click)="openpop(employee['Employee ID'])" class="btn btn-primary" >View Details</button> 
+                    </td>
+                    
+            </tr>
+
+            <!-- <div *ngFor="let employee of Employees">
+              <ng-container *ngIf="employee['Reporting Manager'] === 'Selva' ">
+                <p>Employee Name: {{ employee['Employee Name'] }}</p>
+                <p>Employee ID: {{ employee['Employee ID'] }}</p>
+                
+              </ng-container>
+            </div> -->
+            
+        </tbody>
+    </table>
+
+
+    <h2>My Reportees</h2>
+    <h3 *ngIf="!isReportees" style="text-align: center;">No Reportees to display</h3>
+      <table class="table table-striped table-bordered" *ngIf="isReportees" >
+
+        <thead>
+            <tr>
+                <th>Employee Name </th>
+                
+                <th>Mail Id</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                <tr *ngFor="let employee of Employees1 | team:Employees[3]?.['Employee Name']" >
+                  
+                    <td>{{ employee['Employee Name'] }}</td>
+                   
+                    <td>{{ employee['Mail Id'] }}</td>
+                    
+                    <td>
+                    <button (click)="openpop(employee['Employee ID'])" class="btn btn-primary" >View Details</button> 
+                    </td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+
+</div>

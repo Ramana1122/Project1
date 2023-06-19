@@ -1,0 +1,61 @@
+<div class="ram">
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Employee Name: {{ employee?.['Employee Name'] }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>Employee ID</strong></p>
+                <p><strong>Gender</strong></p>
+                <p><strong>Mail ID</strong></p>
+                <p><strong>Location</strong></p>
+                <p><strong>Reporting Manager</strong></p>
+                <p><strong>Product</strong></p>
+                <p><strong>Manager Mail ID</strong></p>
+                <p><strong>Date Of Joining</strong></p>
+              </div>
+              <div class="col-md-6">
+                <p>{{ employee?.['Employee ID'] }}</p>
+                <p> {{ employee?.Gender }}</p>
+                <p> {{ employee?.['Mail Id'] }}</p>
+                <p> {{ employee?.Location }}</p>
+                <p> {{ employee?.['Reporting Manager'] }}</p>
+                <p> {{ employee?.Product }}</p>
+                <p> {{ employee?.['Manager Email'] }}</p>
+                <p> {{ employee?.['CSC_DoJ'] }}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>HL Designation</strong></p>
+                <p><strong>HL Role</strong></p>
+                <p><strong>HL Title</strong></p>
+                <p><strong>Owning</strong></p>
+                <p><strong>Product Group</strong></p>
+                <p><strong>Product Work Area</strong></p>
+                <p><strong>Unified Roles</strong></p>
+                <p><strong>Unit</strong></p>
+                <p><strong>Work Group</strong></p>
+              </div>
+              <div class="col-md-6">
+                <p> {{ employee?.['HL Designation'] }}</p>
+                <p> {{ employee?.['HL Role'] }}</p>
+                <p> {{ employee?.['HL Title'] }}</p>
+                <p> {{ employee?.Owning }}</p>
+                <p> {{ employee?.['Product Group'] }}</p>
+                <p> {{ employee?.['Product Work Area'] }}</p>
+                <p> {{ employee?.['Unified Roles'] }}</p>
+                <p> {{ employee?.Unit }}</p>
+                <p> {{ employee?.['Work Group'] }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

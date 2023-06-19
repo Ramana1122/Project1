@@ -1,0 +1,55 @@
+<div class="side-nav-content">
+  <div class="custom-control custom-switch" style="padding-left: 16px;">
+    <input type="checkbox" class="custom-control-input" id="darkSwitch" (change)="toggleMode($event)">
+    <label class="custom-control-label " for="darkSwitch" style="padding-left: 20px;">Dark Mode</label>
+  </div>
+      <ul class="nav-list" [ngClass]="{'nav-list-open': sideNavStatus}">
+        <li class="nav-list-items">
+          <i class="{{list[0].icon1}}"></i>
+          <span>
+            <a [routerLink]="['/admin']">{{ list[0].name1 }}</a>
+          </span> 
+        </li>
+        <li class="nav-list-items">
+          <i class="{{list[1].icon2}}"></i>
+          <span>
+            <a [routerLink]="['/admin/mydetails']">{{ list[1].name2 }}</a>
+          </span>
+        </li>
+        <li class="nav-list-items">
+          <i class="{{list[2].icon3}}"></i>
+          <span>
+            <a [routerLink]="['/admin/my-team']">{{ list[2].name3 }}</a>
+          </span>
+        </li>
+        <li class="nav-list-items">
+          <i class="{{list[3].icon4}}"></i>
+          <span>
+            <a [routerLink]="['/admin/pop']">{{list[3].name4 }}</a>
+          </span>
+        </li>
+        <li class="nav-list-items">
+          <i class="{{list[4].icon5}}"></i>
+          <span>
+            <a [routerLink]="['/admin/editdetails']">{{list[4].name5 }}</a>
+          </span>
+        </li>
+        <li class="nav-list-items">
+          <i class="{{list[5].icon6}}"></i>
+          <span>
+            <a [routerLink]="['/admin/searchbar']">{{list[5].name6 }}</a>
+          </span>
+        </li>
+        <li class="nav-list-items2">
+          <img src="../../assets/normal_4e31334a0a30a862-removebg-preview.png" class="version-image">
+          <span class="nav-item-span">Version 1.0</span>
+
+        </li>
+      </ul>
+      
+</div>
+<!-- <div class="ver">
+    <img src="../../assets/normal_4e31334a0a30a862-removebg-preview.png" style="height:
+    35px; width: 35px;">
+    Version 1.0
+  </div> -->

@@ -1,0 +1,36 @@
+.inf-content{
+  border:1px solid #f5f5f5;
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;  
+  box-shadow: 7px 7px 7px rgba(0, 0, 0, 0.3); 
+}
+
+
+  .inf-content {
+      padding: 20px;
+  }
+
+  .ratings li {
+      display: inline-block;
+      font-size: 18px;
+      color: #ffd700;
+  }
+
+  .row {
+      margin-bottom: 10px;
+  }
+
+  .col-label {
+      font-weight: bold;
+  }
+
+  .col-value {
+      color: #337ab7;
+  }
+  .ram{
+    overflow-y: scroll;
+    max-height: 576px;
+    margin-left: 300px;   
+  }
+

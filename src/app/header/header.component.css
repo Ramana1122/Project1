@@ -1,0 +1,37 @@
+nav{
+    height:100%
+}
+.side-nav-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.side-nav-button:hover{
+    background-color: black;
+    border-radius: 20px;
+}
+.logout{
+    cursor: pointer;     
+    float: left;
+    margin-right: 20px;
+}
+.backhead{
+    background-color: rgb(50, 122, 169);  
+} 
+.navbar-brand{
+    width: 95%;
+}
+.dee{
+    color: black;
+}
+
+
+
+
+
+
+
+ 
+  

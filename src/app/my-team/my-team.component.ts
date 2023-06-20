@@ -69,7 +69,7 @@ ngOnInit(): void {
 
 openpop(empId: any) {
   sessionStorage.setItem('empId', empId);
-  this.router.navigateByUrl('/employee-details');
+  this.router.navigateByUrl('/admin/employee-details');
 }
 
 }

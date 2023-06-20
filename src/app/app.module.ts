@@ -22,7 +22,8 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { EmployeeDetailComponent } from './employeedetails/employeedetails.component';
 import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [MyapiService],
   bootstrap: [AppComponent]

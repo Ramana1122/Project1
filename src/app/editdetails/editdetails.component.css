@@ -1,10 +1,11 @@
 .container {
-  max-width: 1000px;
+  max-width: 1050px;
   /* margin: 0 auto; */
   overflow-y: scroll;
-  max-height: 80vh;
-  margin-top: 100px;
-  margin-right: 10px;
+  max-height: 55vh;
+  margin-top: 60px;
+  margin-right: 5px;
+  /* border: 1px solid black; */
 }
 
 .editemp {
@@ -18,12 +19,100 @@
 .form-row .form-group {
   flex: 1;
   margin-right: 10px;
+  margin-bottom: 10px; /* Add space at the bottom */
 }
 
+
 .btn-primary {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .text-danger {
   color: red;
 }
+.ram{
+  margin-top: 20px;
+  width: 500px;
+  margin-left: 400px;
+}
+.title{
+  margin-top: 90px;
+  margin-left: 250px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  width: 500px;
+  margin-left: 400px;
+}
+
+.search-bar .form-row {
+  flex: 1;
+}
+
+.search-bar .form-row .form-group.search-input {
+  margin-right: 10px;
+  width: 500px;
+}
+
+.search-bar .form-row .btn-primary {
+  /* margin-top: 0; */
+  margin-top: 22px;
+  height: 40px;
+}
+
+
+/* Toaster Message Styles */
+.toaster {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.toaster.success {
+  background-color: #c9fdd1;
+  border-color: #7ce28c;
+}
+
+.toaster.error {
+  background-color: #fedede;
+  border-color: #f36868;
+}
+
+.toaster.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.toaster .message {
+  flex: 1;
+}
+
+.toaster .close-icon {
+  cursor: pointer;
+}
+
+/* Form Styles */
+.form-container {
+  position: relative;
+}
+
+.toaster-form {
+  margin-bottom: 20px;
+}
+

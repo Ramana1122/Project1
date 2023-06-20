@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyapiService } from '../services/myapi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+// import { moment } from 'ngx-bootstrap/chronos/testing/chain';
+// import * as moment from "moment";
 
 @Component({
   selector: 'app-editdetails',
@@ -16,7 +19,9 @@ export class EditdetailsComponent implements OnInit {
   editForm!: FormGroup;
   showForm: boolean = false; // Flag to control form visibility
 
-
+  // showToaster: boolean = false;
+  // toasterType: string = '';
+  // toasterMessage: string = '';
 
   desiginationdata:any[]=[]
   roledata:any[]=[]
@@ -30,11 +35,13 @@ export class EditdetailsComponent implements OnInit {
   workgroupdata:any[]=[]
   dd:any[]=[];
   tempVar: any;
+  Locationdata:any[]=[]
 
   constructor(
     private route: ActivatedRoute,
     private myApiService: MyapiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -57,6 +64,14 @@ export class EditdetailsComponent implements OnInit {
       },
       error:()=>{this.desiginationdata= []}
     });
+
+    this.myApiService.getdesigination("Location").subscribe({
+      next:(data:any)=>{
+        this.Locationdata = data;
+      },
+      error:()=>{this.Locationdata= []}
+    });
+
 
     this.myApiService.getdesigination("HL_Title").subscribe({
       next:(data:any)=>{
@@ -162,12 +177,13 @@ export class EditdetailsComponent implements OnInit {
       }
     });
   }
+  
 
   updateEmployee() {
     if (this.editForm.invalid) {
       // Mark form controls as touched to display validation errors
       Object.values(this.editForm.controls).forEach(control => control.markAsTouched());
-      alert("Invalid Form....");
+      this.toastr.error('Invalid Form....');
       return;
     }
 
@@ -175,15 +191,18 @@ export class EditdetailsComponent implements OnInit {
       this.myApiService.updateEmployee(this.employee.EmployeeCode, this.editForm.value).subscribe(() => {
         // Update successful
         console.log('Update successful');
-        alert('Update Successful....');
+        this.toastr.success('Update Successful....');
         //this.searchEmployee();
         this.showForm = false; // Hide the form after updating
         this.employee = null;
         this.searchId = '';
         this.editForm.reset();
+
+        // this.showToaster = true;
+        // this.toasterMessage = 'Employee updated successfully.';
       }, error => {
         console.error('Error updating employee:', error);
-        alert('Error updating employee. Please try again.');
+        this.toastr.error('Error updating employee. Please try again.');
         this.employee = null;
         this.searchId = '';
         this.editForm.reset();
@@ -192,6 +211,22 @@ export class EditdetailsComponent implements OnInit {
      
     }
   }
+  // showToasterMessage(type: string, message: string) {
+  //   this.showToaster = true;
+  //   this.toasterType = type;
+  //   this.toasterMessage = message;
+  //   console.log(message)
+
+  //   setTimeout(() => {
+  //     this.hideToaster();
+  //   }, 3000);
+  // }
+
+  // hideToaster() {
+  //   this.showToaster = false;
+  //   this.toasterType = '';
+  //   this.toasterMessage = '';
+  // }
 
   private populateEditForm() {
     if (this.employee) {
@@ -222,48 +257,46 @@ export class EditdetailsComponent implements OnInit {
     }
   }
 
-  getdomain(descode:any){
-    // console.log("ProductWorkArea",this.pop.value.ProductWorkArea)
-    // this.tempVar = "Advisor Data Architect"
-    // descode = this.pop.get('HLDesignation')
-    this.myApiService.getdesigination(descode).subscribe((res:any)=>{
-    switch(descode){
-      case "HL_Designation":
-          this.desiginationdata=res;
+  getdomain(descode: any) {
+    this.myApiService.getdesigination(descode).subscribe((res: any) => {
+      switch (descode) {
+        case 'HL_Designation':
+          this.desiginationdata = res;
           break;
-      case "HL_Role":
-            this.roledata=res;
-            break;
-      case "HL_Title":
-          this.titledata=res;
+        case 'HL_Role':
+          this.roledata = res;
           break;
-            
-      case "Owning":
-          this.owingdata=res;
-           break;
-      case "Product":
-        this.productdata=res;
-        break;
-      case "Product_Work_Area":
-         this.productworkdata=res;
-         break;
-      case "Unified_Roles":
-        this.unifieddata=res;
-        break;
-      case "Unit":
-        this.unitdata=res;
-        break;
-       case "Work_Group":
-        this.workgroupdata=res;
-        break;
-        case "Product_Group":
-          this.productgroup=res;
+        case 'HL_Title':
+          this.titledata = res;
           break;
-      default:
-          console.log("It's the weekend!");  
-
-    }
-    })
-    
-    }
+        case 'Owning':
+          this.owingdata = res;
+          break;
+        case 'Product':
+          this.productdata = res;
+          break;
+        case 'Product_Work_Area':
+          this.productworkdata = res;
+          break;
+        case 'Unified_Roles':
+          this.unifieddata = res;
+          break;
+        case 'Unit':
+          this.unitdata = res;
+          break;
+        case 'Work_Group':
+          this.workgroupdata = res;
+          break;
+        case 'Product_Group':
+          this.productgroup = res;
+          break;
+        default:
+          console.log("It's the weekend!");
+      }
+    }, (error) => {
+      console.error('Error retrieving data:', error);
+      this.toastr.error('Error retrieving data. Please try again.');
+    });
+  }
+  
 }

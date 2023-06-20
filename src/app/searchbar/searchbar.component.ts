@@ -22,7 +22,7 @@ export class SearchbarComponent implements OnInit {
   }
 
   navigateToEmployeeDetails(employee: any) {
-    this.router.navigate(['/details', employee.EmployeeCode]);
+    this.router.navigate(['/admin/details', employee.EmployeeCode]);
   }
 
   onSearch() {

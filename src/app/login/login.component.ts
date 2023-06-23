@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LogService } from '../services/log.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms'; // Update the import statement for FormGroup, FormControl, and Validators.
+import { Toast, ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
   dd:any[]=[];
   tempVar: any;
   
-  constructor(private log :LogService,private route:Router) { 
+  constructor(private log :LogService,private route:Router,private toastr:ToastrService) { 
   }
 
     
@@ -57,6 +58,7 @@ export class LoginComponent implements OnInit {
     this.clear()
   }
  submit(): void{
+  
   this.route.navigate(['/login']);
  }
 clear(){
@@ -73,6 +75,10 @@ clear(){
 }
 
 login(): void {
+  //  this.toastr.success('Login success');
+  // this.toastr.error('Not login');
+  
+  // console.log('toaster')
   this.errorEmpId = '';
   this.errorPassword = '';
   localStorage.setItem("userid","Welcome user")
@@ -81,76 +87,104 @@ login(): void {
   }
   if (!this.password) {
     this.errorPassword = 'Please enter the password';
-  } else {
-    this.log.getData(this.employeeid, this.password).subscribe((data) => {
-      if (data && data !== '') {
-        alert('Login successful');
-        localStorage.setItem("userid",data.employeeid)
-        // localStorage.getItem("userid")
-        this.route.navigate(['/admin']); // Redirect to home1 component
-      } else {
-        alert('Login failed');
-      }
-      console.log(data);
+  }else{
+    this.log.getData(this.employeeid,this.password).subscribe((data)=>{
+      if(data&&data!=""){
+        this.toastr.success('Login success');
 
-    });
+        this.route.navigate(['/admin']);
+      }else{
+        this.toastr.success(' Not Login');
+      }
+        console.log(data)
+    })
   }
 }
-
  isNumberKey(evt:any){
   var charCode = (evt.which) ? evt.which : evt.keyCode
   return !(charCode > 31 && (charCode < 48 || charCode > 57));
 }
 
-validate(){
+validate():void{
+
+  // this.toastr.success('submitted successfully');
+  // this.toastr.error('Error');
+  
+  // console.log('toaster')
+  
   
   this.errorEmpId ="";
   this.errorCurrentPassword ="";
   this.errorNewPassword ="";
   this.errorRetypenewPassword ="";
-
+let isEmpIdEmpty=true;
+let isPassIdEmpty=true;
+let isCurrentPassIdEmpty=true;
+let isRetypePassIdEmpty=true;
     if(this.employeeid ==  null || this.employeeid == undefined || this.employeeid == ""){
+      isEmpIdEmpty=false
       this.errorEmpId="Please enter the emp code";
     }
     
      if(this.currentPassword == null || this.currentPassword == undefined || this.currentPassword == "") {
+        isCurrentPassIdEmpty=false
         this.errorCurrentPassword="Please enter the current password";
     }
-     if(this.newPassword == null || this.newPassword == undefined || this.newPassword == "") {
+     if(this.newPassword == null || this.newPassword == undefined || this.newPassword == ""||this.newPassword==" ") {
       this.errorNewPassword="Please enter the  new password";
+      isPassIdEmpty=false
   }
-    if(this.retypenewPassword == null || this.retypenewPassword == undefined|| this.retypenewPassword == "") {
+    if(this.retypenewPassword == null || this.retypenewPassword == undefined|| this.retypenewPassword == ""||this.retypenewPassword==" ") {
     this.errorRetypenewPassword="Please enter the retype newPassword ";
-
-    if(this.newPassword != this.retypenewPassword)
-
-    this.errorRetypenewPassword ="password not match";
+    isRetypePassIdEmpty=false
     }else{
-      let user={
-        "EmployeeCode":this.employeeid,
-        "Password":this.newPassword
+      if(this.newPassword != this.retypenewPassword){
+
+        this.errorRetypenewPassword ="password not match";
       }
-      this.log.putData(user).subscribe((data)=>{
-
-        // console.log("dmk",data){
-          if(data&&data!=""){
-        {
-          alert("submitted")
-        this.route.navigate(['/login'])
-        }}
-        else{
-          alert("Error")
+        
+      else  if(isCurrentPassIdEmpty&&isEmpIdEmpty&&isPassIdEmpty&&isRetypePassIdEmpty){
+        let user={
+          "EmployeeCode":this.employeeid,
+          "Password":this.newPassword
         }
-        console.log("dmk",data)
-      })
-
+         this.log.putData(user).subscribe((data)=>{
+    
+         
+           if(data&&data!="")
+           {
+            this.toastr.success('updated password');
+          this.route.navigate(['/login'])
+           }
+           else{
+            this.toastr.success('Error');
+           }
+            console.log("dmk",data)
+        })
+      
+      }
     }
-  
-    
-    
-  
-    
+
+   
+
 }
+
+
+     
+
+  
+
+  
+  
+
+  
+
+      // let user={
+      //   "EmployeeCode":this.employeeid,
+      //   "Password":this.newPassword
+      // }
+      
+  
 
 
 

@@ -4,6 +4,7 @@ import { MyapiService } from '../services/myapi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
+import { AuthService } from '../services/Auth.service';
 // import { moment } from 'ngx-bootstrap/chronos/testing/chain';
 // import * as moment from "moment";
 
@@ -43,7 +44,8 @@ export class EditdetailsComponent implements OnInit {
     private myApiService: MyapiService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private authService: AuthService,
   ) {}
 
   ngOnInit() {
@@ -162,6 +164,13 @@ export class EditdetailsComponent implements OnInit {
     if (this.employeeForm.invalid) {
       return;
     }
+  
+    // Check if the user is authorized as a manager
+    if (!this.authService.isManager()) {
+      this.toastr.error('You are not authorized to perform this action.');
+      return;
+    }
+  
     console.log("searchId", this.searchId)
     this.myApiService.searchEmployeeById(this.employeeForm.value.searchId).subscribe((response: any) => {
       console.log(response);
@@ -169,11 +178,11 @@ export class EditdetailsComponent implements OnInit {
       if (response) {
         this.employee = response;
         console.log("werty" + this.employee);
-
+  
         this.populateEditForm();
         this.showForm = true; // Show the form after populating data
       } else {
-        this.toastr.error('Invalid Employee Id')
+        this.toastr.error('Invalid Employee Id');
         this.employee = null;
         this.editForm.reset();
         this.showForm = false; // Hide the form if no employee found

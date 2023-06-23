@@ -26,8 +26,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 
+
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     EditdetailsComponent,
     HeaderComponent,
@@ -42,9 +43,9 @@ import { DatePipe } from '@angular/common';
     TeamPipe,
     MydetailsComponent,
     LoginComponent,
-    AdminComponent
-    
-  ], 
+    AdminComponent,
+      
+   ], 
   imports: [
     BrowserModule,
     AppRoutingModule,

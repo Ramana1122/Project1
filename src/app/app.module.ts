@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { AdminComponent } from './admin/admin.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],
-  providers: [MyapiService],
+  providers: [MyapiService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

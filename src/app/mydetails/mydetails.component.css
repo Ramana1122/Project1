@@ -1,36 +1,102 @@
 .employee-details-row p {
-    margin-left: 5px;
-  }
-  
-  .employee-details-column {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-row-gap: 10px;
-  }
-  
-  .employee-details-column .form-group {
-    margin-bottom: 0;
-  }
-  
-  .employee-details-column label {
-    font-weight: bold;
-  }
-  
-  .employee-details-column p {
-    margin-bottom: 5px;
-  }
-  
-  .card-header {
-    background-color: rgb(50, 122, 169);
-    color:white;
-  }
-  
-  .container {
-    margin-top: 30px;
-  }
-  .ram{
-    margin-top: 80px;
-    overflow-y:scroll;
-    max-height:80vh;
-  }
-  
+
+  margin-left: 5px;
+
+}
+
+
+
+
+
+.employee-details-column {
+
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  grid-row-gap: 10px;
+
+}
+
+
+
+
+.employee-details-column .form-group {
+
+  margin-bottom: 0;
+
+}
+
+.C{
+
+  font-weight:bold;
+
+ 
+
+}
+
+.D{
+
+  padding-top: 10px;
+
+}
+
+
+
+
+.employee-details-column label {
+
+  font-weight: bold;
+
+}
+
+h4{
+
+  text-align: center;
+
+  font-weight:bold ;
+
+}
+
+
+
+
+.employee-details-column p {
+
+  margin-bottom: 5px;
+
+}
+
+.card-header{
+
+  background-color: rgb(50, 122, 169) ;
+
+  color:white;
+
+
+
+
+}
+
+.container{
+
+  margin-top:70px;
+
+  overflow: auto;
+
+
+
+
+}
+
+.ram{
+
+  overflow-y:scroll ;
+
+  max-height: 96vh;
+
+  margin-top: 20px;
+
+  margin-left: 50px;
+
+}

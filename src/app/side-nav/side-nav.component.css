@@ -15,6 +15,16 @@
     border-radius: 10px;
     cursor: pointer;
 }
+.nav-list-items:hover {
+    background-color: rgba(2, 2, 2, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+}
+.active{
+    background-color: rgba(2, 2, 2, 0.3);
+    border-radius: 10px;
+    cursor: pointer; 
+}
 
 .nav-list-items2 {
     height: 30vh;

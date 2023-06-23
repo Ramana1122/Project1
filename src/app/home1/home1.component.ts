@@ -3,6 +3,7 @@ import { EmpDataService } from '../services/emp-data.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home1',
@@ -10,27 +11,30 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./home1.component.css']
 })
 export class Home1Component implements OnInit {
-  employeeId = 19001223;
-  employee: any;
 
-  constructor(private employeeService: EmpDataService) { }
-
-  ngOnInit(): void {
-    this.getEmployeeData();
-  }
-  getEmployeeData(): void {
-    this.employeeService.getEmployeeById(this.employeeId).subscribe(
-      (response: any[]) => {
-        const employee = response.find(emp => emp['Employee ID'] == this.employeeId);
-        if (employee) {
-          this.employee = employee;
-        }
-      },
-      (error: any) => {
-        console.error('Error fetching employee data:', error);
+employeeId : string='';
+employee: any;
+dateString:string='';
+constructor(private employeeService: EmpDataService,private route: ActivatedRoute,private datePipe: DatePipe) {
+ }
+//  formatDate(dateString: string): string {
+//   const date = new Date(dateString);
+//    return this.datePipe.transform(date);
+// }
+ngOnInit(): void {
+ this.employeeId = this.employeeService.getId();
+    console.log(this.employeeId);
+  this.employeeService.getEmployeeById(this.employeeId).subscribe(
+    (data) => {
+      // console.log(data);
+      if(data){
+        this.employee = data;
       }
-    );
-  }
+    },
+    (error) => {
+      console.error(error);
+    }
+  )}
 }
   ///////////////////////////////////////////////////////////
 //   employee:any;

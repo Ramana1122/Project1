@@ -6,10 +6,16 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class EmpDataService {
-  private apiUrl = 'https://temp-80aee-default-rtdb.firebaseio.com/data.json';
+  private empId:string=""
   constructor(private http: HttpClient) { }
-
-  getEmployeeById(employeeId: number): Observable<any> {
-    return this.http.get<any[]>(this.apiUrl);
+  getEmployeeById(employeeId: string) {
+    const apiUrl = 'http://nhsappchna6210.cscidp.net/rdb/api/employee/'+ employeeId;
+    return this.http.get(apiUrl);
+  }
+  public getId(){
+    return this.empId;
+  }
+  public setId(empId:string){
+    this.empId=empId;
   }
 }

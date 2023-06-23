@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MyapiService } from '../services/myapi.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 // import { moment } from 'ngx-bootstrap/chronos/testing/chain';
 // import * as moment from "moment";
 
@@ -41,7 +42,8 @@ export class EditdetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private myApiService: MyapiService,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit() {
@@ -171,6 +173,7 @@ export class EditdetailsComponent implements OnInit {
         this.populateEditForm();
         this.showForm = true; // Show the form after populating data
       } else {
+        this.toastr.error('Invalid Employee Id')
         this.employee = null;
         this.editForm.reset();
         this.showForm = false; // Hide the form if no employee found
@@ -235,7 +238,8 @@ export class EditdetailsComponent implements OnInit {
         DedalusId: this.employee['DedalusId'],
         EmployeeCode: this.employee['EmployeeCode'],
         EmployeeName: this.employee['EmployeeName'],
-        DateofJoin: this.employee['DateofJoin'],
+        // DateofJoin: this.employee['DateofJoin'],
+        DateofJoin: this.datePipe.transform(this.employee.DateofJoin, 'dd/MM/yyyy'),
         Gender: this.employee['Gender'],
         Location: this.employee['Location'],
         ProductGroup: this.employee['ProductGroup'],

@@ -1,90 +1,87 @@
-<div class="c1">
-<div class="container">
+<div class="ram">
+  <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">     
+      <div class="col-lg-10">
+        <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Employee Name: {{ Employees['Employee Name'] }}</h4>
+            <h4 class="card-title">Employee Name: {{ employeeData.EmployeeName }}</h4>
           </div>
-
-            <div class="card-body"> 
-              <div class="card-content">
-                <p><strong>Employee ID:</strong> {{ Employees['Employee ID'] }}</p>
-            <p><strong>Employee Name:</strong> {{ Employees['Employee Name']}}</p>
-            <p><strong>Manager Name:</strong> {{ Employees['Reporting Manager'] }}</p>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p>Employee ID</p>
+                <p>Employee Name</p>
+                <p>Manager Name</p>
+              </div>
+              <div class="col-md-6">
+                <div class="A">
+                  <p>{{ employeeData.EmployeeCode }}</p>
+                  <p>{{ employeeData.EmployeeName }}</p>
+                  <p>{{ employeeData.ManagerName }}</p>
+                </div>
+              </div>
+            </div>
           </div>
-            <hr> 
-            </div>    
+        </div>
       </div>
     </div>
-  </div>
+  </div>  
+
 
 
 
   <div class="container">
-    <h2>My Peers</h2>
-    <!-- <table class = 'table table-trapped '> -->
-      <table class="table table-striped table-bordered">
-
-        <thead>
-            <tr>
-                <th>Employee Name </th>
-                
-                <th>Mail Id</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-                <tr *ngFor="let employee of Employees2 | team:Employees['Employee Name']" >
-                  
-                    <td>{{ employee['Employee Name'] }}</td>
-                   
-                    <td>{{ employee['Mail Id'] }}</td>
-                    
-                    <td>
-                    <button (click)="openpop(employee['Employee ID'])" class="btn btn-primary" >View Details</button> 
-                    </td>
-                    
-            </tr>
-
-            <!-- <div *ngFor="let employee of Employees">
-              <ng-container *ngIf="employee['Reporting Manager'] === 'Selva' ">
-                <p>Employee Name: {{ employee['Employee Name'] }}</p>
-                <p>Employee ID: {{ employee['Employee ID'] }}</p>
-                
-              </ng-container>
-            </div> -->
-            
-        </tbody>
-    </table>
-
-
+    
     <h2>My Reportees</h2>
-    <h3 *ngIf="!isReportees" style="text-align: center;">No Reportees to display</h3>
-      <table class="table table-striped table-bordered" *ngIf="isReportees" >
-
-        <thead>
-            <tr>
-                <th>Employee Name </th>
-                
-                <th>Mail Id</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-           
-                <tr *ngFor="let employee of Employees1 | team:Employees[3]?.['Employee Name']" >
-                  
-                    <td>{{ employee['Employee Name'] }}</td>
-                   
-                    <td>{{ employee['Mail Id'] }}</td>
-                    
-                    <td>
-                    <button (click)="openpop(employee['Employee ID'])" class="btn btn-primary" >View Details</button> 
-                    </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="scroll">
+    <table class="table table-bordered">
+      <thead style="position: sticky">
+        <tr>
+          <th class="header">Employee Name</th>
+          <th class="header">Mail Id</th>
+          <th class="header">Details</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+     <h5 *ngIf="!isReportees" style="text-align: center; padding-left: 90px;" > No Reportees to Display </h5>  
+        <tr *ngFor="let employee of employeeData2">
+          <td>{{ employee.EmployeeName}}</td>
+          <td>{{ employee.Employee_MailId}}</td>
+          <td>
+            <button (click)="openpop(employee['EmployeeCode'])" class="btn btn-primary">View Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    
+    
+    
+    <h2 class="peer">My Peers</h2>
+    
+    <div class="scroll">
+    <table class="table table-bordered" > 
+      <thead style="position: sticky">
+        <tr>
+          <th class="header">Employee Name</th>
+          <th class="header">Mail Id</th>
+          <th class="header">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr *ngFor="let employee of employeeData3">
+          
+          <td>{{ employee['EmployeeName'] }}</td>
+          <td>{{ employee['Employee_MailId'] }}</td>
+          <td>
+            <button (click)="openpop(employee['EmployeeCode'])" class="btn btn-primary">View Details</button>
+          </td>
+        </tr>
+         </tbody>
+    </table>
+  </div>
 </div>
 
 </div>

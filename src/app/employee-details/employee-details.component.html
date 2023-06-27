@@ -1,209 +1,195 @@
+     <div class="ram">
 
-<div class ="ram">
-<div class="container bootstrap snippets bootdey">
-  <div class="panel-body inf-content">
-      <div class="row">
-          <div class="col-md-6">
-               <ul title="Ratings" class="list-inline ratings text-center">
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-star"></span></a></li>
-              </ul> 
-          </div> 
-          <div class="col-md-8">
-              <div class="row">
-                  <div class="col-md-6" style="align-items: center;justify-content: center;">
-                      <h2>EMPLOYEE DETAILS</h2>
-                      <br>
-                      <strong>
-                          <span class="glyphicon glyphicon-asterisk text-primary"></span>
-                          Employee ID
-                      </strong>
+        <div class="container">
+      
+          <div class="row justify-content-center">
+      
+            <div class="col-md-10">
+      
+              <div class="card">
+      
+                <div class="card-header">
+      
+                  <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
+      
+                </div>
+      
+                <div class="card-body">
+      
+                  <div class="row">
+      
+                    <div class="col-md-6">
+      
+                      <div class="details-row">
+      
+                        <div class="label">Dedalus ID</div>
+      
+                        <div class="value">{{ employee?.DedalusId }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Employee ID</div>
+      
+                        <div class="value">{{ employee?.['EmployeeCode'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Gender</div>
+      
+                        <div class="value">{{ employee?.Gender }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Employee Mail ID</div>
+      
+                        <div class="value">{{ employee?.['Employee_MailId'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Location</div>
+      
+                        <div class="value">{{ employee?.Location }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Reporting Manager</div>
+      
+                        <div class="value">{{ employee?.['ManagerName'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Product</div>
+      
+                        <div class="value">{{ employee?.Product }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Manager Code</div>
+      
+                        <div class="value">{{ employee?.ManagerCode }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Manager Mail ID</div>
+      
+                        <div class="value">{{ employee?.['ManagerMailId'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Date Of Joining</div>
+      
+                        <div class="value">{{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</div>
+      
+                      </div>
+      
+                    </div>
+      
+                    <div class="col-md-6">
+      
+                      <div class="details-row">
+      
+                        <div class="label">HL Designation</div>
+      
+                        <div class="value">{{ employee?.['HLDesignation'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">HL Role</div>
+      
+                        <div class="value">{{ employee?.['HLRole'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">HL Title</div>
+      
+                        <div class="value">{{ employee?.['HLTitle'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Owning</div>
+      
+                        <div class="value">{{ employee?.Owning }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Product Group</div>
+      
+                        <div class="value">{{ employee?.['ProductGroup'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Product Work Area</div>
+      
+                        <div class="value">{{ employee?.['ProductWorkArea'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Unified Roles</div>
+      
+                        <div class="value">{{ employee?.['UnifiedRoles'] }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Unit</div>
+      
+                        <div class="value">{{ employee?.Unit }}</div>
+      
+                      </div>
+      
+                      <div class="details-row">
+      
+                        <div class="label">Work Group</div>
+      
+                        <div class="value">{{ employee?.['WorkGroup'] }}</div>
+      
+                      </div>
+      
+                    </div>
+      
                   </div>
-                  <div class="col-md-6 text-primary">
-                     {{ e['Employee ID']}}
-                  </div>
+      
+                </div>
+      
               </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-user text-primary"></span>
-                          Employee Name
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e["Employee Name"]}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-cloud text-primary"></span>
-                          Email
-                      </strong>
-                  </div>
-                  <div  class="col-md-6 text-primary"><a style='text-decoration: none;'href="mailto:charumathi.sb@dedalus.eu"> {{ e['Mail Id']}}</a>                       
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-bookmark text-primary"></span>
-                          Location
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{ e['Location']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-eye-open text-primary"></span>
-                          Product Group
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{ e?.['Product Group']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-envelope text-primary"></span>
-                          Product
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{ e['Product']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Unified Roles
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Unified Roles']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          HL Role
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['HL Role']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          HL title
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['HL Title']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Date of Joining
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['CSC_DoJ']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Unit
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Unit']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Gender
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Gender']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          HL designation
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['HL Title']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Reporting Manager
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Reporting Manager']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Manager email
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      <div  class="col-md-8 text-primary"><a style='text-decoration: none;'href="mailto:charumathi.sb@dedalus.eu">{{e['Manager Email']}} </a>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Work Group
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Product Group']}}
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-md-6">
-                      <strong>
-                          <span class="glyphicon glyphicon-calendar text-primary"></span>
-                          Product Work Area
-                      </strong>
-                  </div>
-                  <div class="col-md-6 text-primary">
-                      {{e['Product Work Area']}}
-                  </div>
-              </div>
+      
+            </div>
+      
           </div>
+      
+        </div>
+      
       </div>
-  </div>
-</div>  
-
-</div>
+      
+      

@@ -19,7 +19,7 @@ export class EmployeeDetailComponent implements OnInit {
   ) {}
 
   handleButtonClick() {
-    this.router.navigate(['search']);
+    this.router.navigate(['admin/searchbar']);
   }
 
   ngOnInit() {

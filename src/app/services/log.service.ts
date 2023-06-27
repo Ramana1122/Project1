@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -14,6 +14,8 @@ export class LogService {
  token:any='';
  email:any='';
  status:boolean=false;
+ checkData = new BehaviorSubject(0);
+ 
   constructor(private http:HttpClient) {
       let username=sessionStorage.getItem("username");
       let usertype=sessionStorage.getItem("usertype");
@@ -26,6 +28,10 @@ export class LogService {
         this.token=token;
         this.email=email;
       }
+   }
+
+   getResponse(){
+    return this.checkData;
    }
 
   getStatus():boolean{

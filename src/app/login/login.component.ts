@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LogService } from '../services/log.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms'; // Update the import statement for FormGroup, FormControl, and Validators.
 import { Toast, ToastrService } from 'ngx-toastr';
+import { EmpDataService } from '../services/emp-data.service';
 
 
 @Component({
@@ -40,7 +41,7 @@ export class LoginComponent implements OnInit {
   dd:any[]=[];
   tempVar: any;
   
-  constructor(private log :LogService,private route:Router,private toastr:ToastrService) { 
+  constructor(private log :LogService,private route:Router,private toastr:ToastrService,private employeeService:EmpDataService) { 
   }
 
     
@@ -90,6 +91,11 @@ login(): void {
   }else{
     this.log.getData(this.employeeid,this.password).subscribe((data)=>{
       if(data&&data!=""){
+
+        sessionStorage.setItem("empid",this.employeeid)
+        this.employeeService.setId( this.employeeid)
+        this.route.navigate(['/admin'], { queryParams: { employeeId: this.employeeid } });
+        this.log.checkData=data;
         this.toastr.success('Login success');
 
         this.route.navigate(['/admin']);
@@ -99,6 +105,8 @@ login(): void {
         console.log(data)
     })
   }
+  const storedEmployeeId = sessionStorage.getItem('employeeId');
+  console.log(storedEmployeeId);
 }
  isNumberKey(evt:any){
   var charCode = (evt.which) ? evt.which : evt.keyCode

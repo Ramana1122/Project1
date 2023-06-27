@@ -1,45 +1,51 @@
 <div class="ram">
-  <div class="container" >
+  <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="col-md-10">
         <div class="card">
           <div class="card-header">
             <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
           </div>
           <div class="card-body">
-            <h4>Personal Details</h4>
             <div class="row">
               <div class="col-md-6">
-                <p>Employee ID</p>
-                <p>Gender</p>
-                <p>Mail ID</p>
+                <h4>Personal Details</h4>
+                <div class="details-row">
+                  <div class="label">Employee ID</div>
+                  <div class="value">{{ employee?.EmployeeCode }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Gender</div>
+                  <div class="value">{{ employee?.Gender }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Mail ID</div>
+                  <div class="value">{{ employee?.['Employee_MailId'] }}</div>
+                </div>
+                <p class="vertical-line"></p>
               </div>
               <div class="col-md-6">
-                <div class="A" *ngIf="employee">
-                <p> {{ employee['EmployeeCode'] }}</p>
-                <p> {{ employee?.Gender }}</p>
-                <p> {{ employee?.['Employee_MailId'] }}</p>
-              </div>
-            </div>
-          </div>
-            <hr>
-            <h4>Job Details</h4>
-            <div class="row">
-              <div class="col-md-6">
-                <p>Location</p>
-                <p>Reporting Manager</p>
-                <p>Product</p>
-                <p>Manager Mail ID</p>
-                <p>Date Of Joining</p>
-              </div>
-              <div class="col-md-6" *ngIf="employee">
-                <div class="B">
-                <p *ngIf="employee.Location else content">  {{employee.Location}}</p>
-                <ng-template #content><p>unknown</p></ng-template>
-                <p *ngIf="employee.Product else content"> {{ employee?.['ManagerName'] }}</p>
-                <p *ngIf="employee.Product else content"> {{ employee?.Product }}</p>
-                <p *ngIf="employee.Product else content"> {{ employee?.['ManagerMailId'] }}</p>
-                <p *ngIf="employee.Product else content"> {{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</p>
+                <h4>Job Details</h4>
+                <div class="details-row">
+                  <div class="label">Location</div>
+                  <div class="value">{{ employee?.Location || 'unknown' }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Reporting Manager</div>
+                  <div class="value">{{ employee?.['ManagerName'] }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Product</div>
+                  <div class="value">{{ employee?.Product }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Manager Mail ID</div>
+                  <div class="value">{{ employee?.['ManagerMailId'] }}</div>
+                </div>
+                <div class="details-row">
+                  <div class="label">Date Of Joining</div>
+                  <div class="value">{{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -47,5 +53,192 @@
       </div>
     </div>
   </div>
+</div>
+
+
+
+
+<!-- <div class="ram">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Personal Details</h4>
+                <div class="details-row">
+                  <p class="label">Employee ID:</p>
+                  <p class="value">{{ employee?.EmployeeCode }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Gender:</p>
+                  <p class="value">{{ employee?.Gender }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Mail ID:</p>
+                  <p class="value">{{ employee?.['Employee_MailId'] }}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h4>Job Details</h4>
+                <div class="details-row">
+                  <p class="label">Location:</p>
+                  <p class="value">{{ employee?.Location || 'unknown' }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Reporting Manager:</p>
+                  <p class="value">{{ employee?.['ManagerName'] }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Product:</p>
+                  <p class="value">{{ employee?.Product }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Manager Mail ID:</p>
+                  <p class="value">{{ employee?.['ManagerMailId'] }}</p>
+                </div>
+                <div class="details-row">
+                  <p class="label">Date Of Joining:</p>
+                  <p class="value">{{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<!--   main
+<div class="ram">
+<div class="container" >
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
+        </div>
+        <div class="card-body">
+          <h4>Personal Details</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Employee ID</p>
+              <p>Gender</p>
+              <p>Mail ID</p>
+            </div>
+            <div class="col-md-6">
+              <div class="A" *ngIf="employee">
+              <p> {{ employee['EmployeeCode'] }}</p>
+              <p> {{ employee?.Gender }}</p>
+              <p> {{ employee?.['Employee_MailId'] }}</p>
+            </div>
+          </div>
+        </div>
+          <hr>
+          <h4>Job Details</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Location</p>
+              <p>Reporting Manager</p>
+              <p>Product</p>
+              <p>Manager Mail ID</p>
+              <p>Date Of Joining</p>
+            </div>
+            <div class="col-md-6" *ngIf="employee">
+              <div class="B">
+              <p *ngIf="employee.Location else content">  {{employee.Location}}</p>
+              <ng-template #content><p>unknown</p></ng-template>
+              <p *ngIf="employee.Product else content"> {{ employee?.['ManagerName'] }}</p>
+              <p *ngIf="employee.Product else content"> {{ employee?.Product }}</p>
+              <p *ngIf="employee.Product else content"> {{ employee?.['ManagerMailId'] }}</p>
+              <p *ngIf="employee.Product else content"> {{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+</div>
+</div> -->
+
+
+
+
+
+<!-- lkavya -->
+<!-- 
+<div class="ram" *ngIf="myDetails">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="D">
+                <p>Dedalus ID</p>
+                <p>Employee ID</p>
+                <p>Gender</p>
+                <p>Employee Mail ID</p>
+                <p>Location</p>
+                <p>Reporting Manager</p>
+                <p>Product</p>
+                <P>Manager Code</P>
+                <p>Manager Mail ID</p>
+                <p>Date Of Joining</p>
+                <div class="D">
+                <p>HL Designation</p>
+              </div>
+                <p>HL Role</p>
+                <p>HL Title</p>
+                <p>Owning</p>
+                <p>Product Group</p>
+                <p>Product Work Area</p>
+                <p>Unified Roles</p>
+                <p>Unit</p>
+                <p>Work Group</p>
+              </div>
+            </div>
+              <div class="col-md-6">
+                <div class="C">
+                <p> {{ employee?.DedalusId }}</p>
+                <p> {{ employee?.['EmployeeCode'] }}</p>
+                <p> {{ employee?.Gender }}</p>
+                <p> {{ employee?.['Employee_MailId'] }}</p>
+                <p> {{ employee?.Location }}</p>
+                <p> {{ employee?.['ManagerName'] }}</p>
+                <p> {{ employee?.Product }}</p>
+                <p> {{ employee?.ManagerCode}}</p>
+                <p> {{ employee?.['ManagerMailId'] }}</p>
+                <p> {{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</p>
+                <p> {{ employee?.['HLDesignation'] }}</p>
+                <p> {{ employee?.['HLRole'] }}</p>
+                <p> {{ employee?.['HLTitle'] }}</p>
+                <p> {{ employee?.Owning }}</p>
+                <p> {{ employee?.['ProductGroup'] }}</p>
+                <p> {{ employee?.['ProductWorkArea'] }}</p>
+                <p> {{ employee?.['UnifiedRoles'] }}</p>
+                <p> {{ employee?.Unit }}</p>
+                <p> {{ employee?.['WorkGroup'] }}</p>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   </div>
+  
+ -->

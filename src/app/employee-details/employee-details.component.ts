@@ -12,24 +12,20 @@ export class EmployeeDetailsComponent {
   details: any;
   empId:any;
   e:any;
+  employee: any;
   
   constructor(private fs : EmployeeService){
     this.empId = sessionStorage.getItem("empId");
     this.readdata(this.empId);
   }
   
-  readdata(empId:any){
+  readdata(empId: any) {
     this.fs.getEmployeeById(empId).subscribe(
-      {
-        next: (data:any) =>{
-          for(let x of data){
-            if(x['Employee ID'] == empId){
-              this.e = x;
-            }
-          }
-        },
-        error : ()=>this.details = {}
-      }
-    )
+      (response: any) => {
+        if (empId == response.EmployeeCode){
+          this.employee = response;
+        }
+      })
+
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+import { EmpDataService } from '../services/emp-data.service';
 
 
 @Component({
@@ -21,55 +23,45 @@ export class MyTeamComponent implements OnInit {
   logged:any;
   isReportees=true;
 
-constructor(private employeeService: EmployeeService,private router: Router) { 
+  //for api
+  employeeData: any;
+  employeeData2:any;
+  employeeData3:any;
+  employeeId1: any;
+
+constructor(private employeeService: EmployeeService,private router: Router,private empservice : EmpDataService) { 
    
 }
 
 ngOnInit(): void {
-  this.logged = 3;
-  this.employeeService.getEmployees().subscribe(response => {
-    this.Employees = response[this.logged];});
 
-    //for peers
-    this.employeeService.getEmployeesdetails().subscribe(response => {
-      const desiredIndex = this.logged; 
-      if (response && response.length > desiredIndex) {
-        const selectedEmployee = response[desiredIndex];
-        const peer = selectedEmployee['Reporting Manager'];
-        this.currentUser = selectedEmployee['Employee Name']
-        this.Employees2 = response.filter(employee => ( employee?.['Reporting Manager'] === peer ));
-      } else {
-        // this.Employees = [];
-        this.selectedEmployee = null;
+  this.employeeId1 =  this.empservice.getId()// 1553640; 
+
+  ///////////////////////for merge
+  this.employeeService.getemployessDeta(
+   this.employeeId1, 'reportee',
+  'peer'
+  ).subscribe(
+    (data) => {
+      console.log('Data:', data);
+      this.employeeData = data[0];
+      this.employeeData2 = data[1];
+      this.employeeData3 = data[2];
+  
+      if (this.employeeData2.length === 0) {
+        this.isReportees = false;
       }
-    });
-
-
-    //for reportees
-    this.employeeService.getEmployeesdetails().subscribe(response => {
-      const desiredIndex = this.logged; 
-      if (response && response.length > desiredIndex) {
-        const selectedEmployee = response[desiredIndex];
-        const report = selectedEmployee['Employee Name'];
-        this.currentUser = selectedEmployee['Employee Name']
-
-        this.Employees1 = response.filter(employee => ( employee?.['Reporting Manager'] === report ));
-
-
-        if(this.Employees1.length == 0){
-          this.isReportees = false;
-        }
-
-      } else {
-        // this.Employees = [];
-        this.selectedEmployee = null;
-      }
-    });
+    },
+    (error) => {
+      console.error(error);
+    }
+  );
+ 
 } 
 
 openpop(empId: any) {
   sessionStorage.setItem('empId', empId);
-  this.router.navigateByUrl('/admin/employee-details');
+  this.router.navigateByUrl('/admin/details');
 }
 
 }

@@ -29,4 +29,3 @@ export class AuthService {
     return this.currentUser && this.currentUser.role === 'manager';
   }
 }
-

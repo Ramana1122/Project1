@@ -142,8 +142,8 @@
         </div>
 
         <div class="form-group col-md-6">
-          <label for="ManagerCode">Manager Code </label>
-          <input type="text" class="form-control" id="ReportingManager" formControlName="ManagerCode" readonly>
+          <label for="ManagerCode">Manager Code <span  style="color:red"> *</span> </label>
+          <input type="text" class="form-control" id="ReportingManager" formControlName="ManagerCode" >
         </div>
       </div>
 
@@ -201,7 +201,7 @@
         <input type="checkbox" id="checkbox" formControlName="checkbox">
       </div> -->
       
-      <button class="btn btn-primary" (click)="updateEmployee()">Update</button>
+      <button [disabled]="DisabledData" class="btn btn-primary" (click)="updateEmployee()">Update</button>
     </div>
   <!-- </div> -->
   </form>

@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DatePipe } from '@angular/common';
 import { AuthService } from '../services/Auth.service';
+import { LogService } from '../services/log.service';
 // import { moment } from 'ngx-bootstrap/chronos/testing/chain';
 // import * as moment from "moment";
 
@@ -38,6 +39,8 @@ export class EditdetailsComponent implements OnInit {
   dd:any[]=[];
   tempVar: any;
   Locationdata:any[]=[]
+  CheckAuthentication:any;
+  DisabledData:boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,6 +49,7 @@ export class EditdetailsComponent implements OnInit {
     private toastr: ToastrService,
     private datePipe: DatePipe,
     private authService: AuthService,
+    private log: LogService
   ) {}
 
   ngOnInit() {
@@ -54,7 +58,12 @@ export class EditdetailsComponent implements OnInit {
     this.employeeForm = this.formBuilder.group({
       searchId: ['', Validators.required]
     });
-
+    this.CheckAuthentication = this.log.getResponse();
+    if(this.CheckAuthentication == "2")
+    this.DisabledData = false;
+    else
+    this.DisabledData = true;
+    
     this.myApiService.getdesigination("Product_Group").subscribe({
       next:(data:any)=>{
         this.productgroup = data;
@@ -166,10 +175,10 @@ export class EditdetailsComponent implements OnInit {
     }
   
     // Check if the user is authorized as a manager
-    if (!this.authService.isManager()) {
-      this.toastr.error('You are not authorized to perform this action.');
-      return;
-    }
+    // if (!this.authService.isManager()) {
+    //   this.toastr.error('You are not authorized to perform this action.');
+    //   return;
+    // }
   
     console.log("searchId", this.searchId)
     this.myApiService.searchEmployeeById(this.employeeForm.value.searchId).subscribe((response: any) => {

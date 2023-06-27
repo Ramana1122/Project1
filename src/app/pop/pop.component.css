@@ -1,5 +1,5 @@
 .container {
-  margin-left: 200px;
+  margin-left: 220px;
   margin-top: 80px;
   max-height:80vh;
   width: 80%;
@@ -13,8 +13,9 @@
 }
 
 .mainHeader {
-  border: 1px solid black;
+  border: 1px solid rgb(50, 122, 169);
   border-radius: 5px;
+  background-color: rgb(50, 122, 169);
 }
 
 .classRow {
@@ -30,7 +31,17 @@
   text-align: center;
   font-size: 18px;
   font-weight: 500;
+  color: white;
 }
+.buttons{
+  display: flex; 
+  margin-bottom: 13px;
+}
+#submit{
+  margin-left: 78%;
+}
+  
+
 
 .confirmForm {
   float: right;
@@ -73,8 +84,8 @@
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+  border-color: 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   cursor: pointer;
   margin-left: 20px;
   margin-right: 15px;
@@ -125,8 +136,39 @@
     height: 400px;
     padding-top: 41px;
     overflow-x: hidden;
+    overflow-y: scroll;
 }
-/* .ram{
-  margin-top: 80px;
-  max-height:80vh;
-} */
+input,
+input::placeholder {
+  font-size: 14px;
+}
+.options{
+  font-size: 14px;
+}
+option{
+  font-size: 14px;
+}
+select {
+  font-size: 14px;
+  color: #495057;
+}
+option:first-of-type {
+   color:black;
+  } 
+.placeholder {
+  font-size: 10px;
+}
+button#clear {
+  height: 40px;
+  width: 70px;
+}
+.alignGetCheck{
+padding-left: 35px;
+}
+.chk-box{
+  position: relative;
+  height: 20px;
+  width: 20px;
+  left: 8px;
+  top: 4px;
+}

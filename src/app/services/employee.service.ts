@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
  export interface Employee { 
   'CSC_DoJ':any;
@@ -40,17 +40,30 @@ export class EmployeeService {
 
 
 // Using Json......................................................
-  private employeesUrl = 'http://localhost:4500/employee'; 
-  getEmployees(): Observable<any[]> {
-    return this.http.get<any[]>(this.employeesUrl);
+
+getemployessDeta
+  (employeeId1:any,reportee?:any,peer?:any){
+    return forkJoin([this.getData1(employeeId1),this.getReportee(employeeId1,reportee),this.getPeer(employeeId1,peer)])
   }
 
-  //test
-  getEmployeesdetails(): Observable<any[]> {
-    return this.http.get<any[]>(this.employeesUrl);
-  }
+getEmployeeById(employeeId1: any): Observable<any> {
+  const url = `http://nhsappchna6210.cscidp.net/rdb/api/employee/`+employeeId1; 
+  return this.http.get<any>(url);
+} 
 
-  getEmployeeById(empid: any) : Observable<any[]> {
-    return this.http.get<any[]> ('http://localhost:4500/employee?Employee ID='+empid);
-  }
+
+getData1(employeeId1: any): Observable<any> {
+  const url = `http://nhsappchna6210.cscidp.net/rdb/api/employee/`+employeeId1; 
+  return this.http.get<any>(url);
+}
+
+getReportee(employeeId1: any,reportee:any): Observable<any> {
+  const url = `http://nhsappchna6210.cscidp.net/rdb/api/Team/`+employeeId1+"?mode="+reportee;
+  return this.http.get<any>(url);
+}
+
+getPeer(employeeId1: any,peer:any): Observable<any> {   
+  const url = `http://nhsappchna6210.cscidp.net/rdb/api/Team/`+employeeId1+"?mode="+peer;
+  return this.http.get<any>(url);
+}
 }

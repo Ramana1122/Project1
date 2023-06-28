@@ -59,7 +59,7 @@ export class EditdetailsComponent implements OnInit {
       searchId: ['', Validators.required]
     });
     this.CheckAuthentication = this.log.getResponse();
-    if(this.CheckAuthentication == "2")
+    if(this.CheckAuthentication == "65")
     this.DisabledData = false;
     else
     this.DisabledData = true;
@@ -209,6 +209,9 @@ export class EditdetailsComponent implements OnInit {
       return;
     }
     if (this.employee) { 
+      console.log(this.editForm.value)
+      let formData = this.editForm.value; 
+      formData.GET=formData.GET?'True':'False' 
       this.myApiService.updateEmployee(this.employee.EmployeeCode, this.editForm.value).subscribe(() => {
         // Update successful
         console.log('Update successful');
@@ -256,8 +259,7 @@ export class EditdetailsComponent implements OnInit {
         DedalusId: this.employee['DedalusId'],
         EmployeeCode: this.employee['EmployeeCode'],
         EmployeeName: this.employee['EmployeeName'],
-        // DateofJoin: this.employee['DateofJoin'],
-        DateofJoin: this.datePipe.transform(this.employee.DateofJoin, 'dd-MMM-YYYY'),
+        DateofJoin: this.employee['DateofJoin'],
         Gender: this.employee['Gender'],
         Location: this.employee['Location'],
         ProductGroup: this.employee['ProductGroup'],

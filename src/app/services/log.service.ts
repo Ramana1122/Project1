@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { server } from './allservers';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class LogService {
  status:boolean=false;
  checkData = new BehaviorSubject(0);
  
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private serverService:server) {
       let username=sessionStorage.getItem("username");
       let usertype=sessionStorage.getItem("usertype");
       let token=sessionStorage.getItem("token");
@@ -100,7 +101,7 @@ export class LogService {
 
   getData(employeeid: number, password:any): Observable<any> {
     
-    const url = "http://nhsappchna6210.cscidp.net/rdb/api/login?ID="+employeeid+"&Password="+password;
+    const url = this.serverService.ServerUrls+"login?ID="+employeeid+"&Password="+password;
 
     return this.http.get<any>(url);
 
@@ -108,7 +109,7 @@ export class LogService {
 
   putData(employee:any): Observable<any> {
     
-    const url = "http://nhsappchna6210.cscidp.net/rdb/api/employee"
+    const url = this.serverService.ServerUrls+"employee"
 
     return this.http.put<any>(url,employee);
 

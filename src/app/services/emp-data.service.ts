@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ServerUrls } from './allservers';
+import { server } from './allservers';
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +9,10 @@ import { ServerUrls } from './allservers';
 export class EmpDataService {
   private empId: string = "";
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private serverService:server) {}
 
-  getEmployeesFromServer1(): Observable<any> {
-    return this.http.get(ServerUrls.SERVER_1);
-  }
-  
   getEmployeeById(employeeId: string): Observable<any> {
-    const apiUrl = ServerUrls.SERVER_1 + '/' + employeeId;
+    const apiUrl = this.serverService.ServerUrls +'employee/' +'/' + employeeId;
     return this.http.get(apiUrl);
   }
 

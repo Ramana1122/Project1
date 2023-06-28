@@ -38,24 +38,53 @@ ngOnInit(): void {
   this.employeeId1 =  this.empservice.getId()// 1553640; 
 
   ///////////////////////for merge
+ 
+
+if(this.employeeId1=="" ){
+
+    this.router.navigateByUrl('/login');
+
+  }else{
+
+        ///////////////////////for merge
+
   this.employeeService.getemployessDeta(
-   this.employeeId1, 'reportee',
-  'peer'
-  ).subscribe(
-    (data) => {
-      console.log('Data:', data);
-      this.employeeData = data[0];
-      this.employeeData2 = data[1];
-      this.employeeData3 = data[2];
-  
-      if (this.employeeData2.length === 0) {
-        this.isReportees = false;
-      }
-    },
-    (error) => {
-      console.error(error);
-    }
-  );
+
+    this.employeeId1, 'reportee',
+
+   'peer'
+
+   ).subscribe(
+
+     (data) => {
+
+       console.log('Data:', data);
+
+       this.employeeData = data[0];
+
+       this.employeeData2 = data[1];
+
+       this.employeeData3 = data[2];
+
+   
+
+       if (this.employeeData2.length === 0) {
+
+         this.isReportees = false;
+
+       }
+
+     },
+
+     (error) => {
+
+       console.error(error);
+
+     }
+
+   );
+
+  }
  
 } 
 

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { server } from './allservers';
 
 export interface Employee { 
   OID: any;
@@ -31,14 +32,14 @@ export interface Employee {
   providedIn: 'root'
 })
 export class DataService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private serverService:server) {}
 
   getData1() {
-    return this.http.get<any>('http://nhsappchna6210.cscidp.net/rdb/api/employee?co=');
+    return this.http.get<any>( this.serverService.ServerUrls+'employee?co=');
   }
 
   getDetails(OID: any) {
-    return this.http.get<Employee>('http://nhsappchna6210.cscidp.net/rdb/api/employee/' + OID);
+    return this.http.get<Employee>(this.serverService.ServerUrls+'employee/' + OID);
   }
   
 }

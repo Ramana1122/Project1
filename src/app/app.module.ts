@@ -25,7 +25,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
-
+import { server } from './services/allservers';
 
 @NgModule({
   declarations: [	
@@ -56,7 +56,7 @@ import { DatePipe } from '@angular/common';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
   ],
-  providers: [MyapiService,DatePipe],
+  providers: [MyapiService,DatePipe,server],
   bootstrap: [AppComponent]
 })
 export class AppModule {

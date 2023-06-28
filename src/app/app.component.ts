@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { server } from './services/allservers';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,11 @@ export class AppComponent {
   sideNavStatus:boolean=false;
   toggleSideNav() {
     this.sideNavStatus = !this.sideNavStatus;
+  }
+constructor(
+    public serverService: server
+  ) {}
+  ngOnInit():void{
+    this.serverService.getJonsurl();
   }
 }

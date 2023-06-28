@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { server } from './allservers';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MyapiService {
-  private apiUrl = 'http://nhsappchna6210.cscidp.net/rdb/api/employee?co=';
+  // private apiUrl = this.serverService.ServerUrls+'employee?co=';
 
-  private apiUrl1 = 'http://nhsappchna6210.cscidp.net/rdb/api/employee';
+  // private apiUrl1 = this.serverService.ServerUrls+'employee';
 
-  private apiUrl2 = '';
-
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private serverService:server) { }
 
   // searchEmployeeById(employeeId: string) {
   //   return this.http.get(`${this.apiUrl}${employeeId}`);
@@ -22,7 +21,7 @@ constructor(private http: HttpClient) { }
   // } 
 
   searchEmployeeById(employeeId: string) {
-    return this.http.get(`${this.apiUrl1}/${employeeId}`).pipe(
+    return this.http.get(this.serverService.ServerUrls+'employee'+`/${employeeId}`).pipe(
       catchError((error: HttpErrorResponse) => {
         // Handle the error appropriately
         console.error('An error occurred:', error.message);
@@ -38,13 +37,13 @@ constructor(private http: HttpClient) { }
   }
 
   updateEmployee(employeeId: string, employeeData: any) {
-    return this.http.put(`${this.apiUrl1}/${employeeId}`, employeeData);
+    return this.http.put(this.serverService.ServerUrls+'employee'+`/${employeeId}`, employeeData);
     // return this.http.put(`${this.apiUrl}/data/0.json`, employeeData);
     // return this.http.put(`${this.apiUrl}/data/`+employeeId+'.json', employeeData);
   }
 
   getdesigination(domaincode:string){
-    return this.http.get("http://nhsappchna6210.cscidp.net/rdb/api/ValueSet?DomainCode="+domaincode)
+    return this.http.get(this.serverService.ServerUrls+"ValueSet?DomainCode="+domaincode)
   }
   
 }

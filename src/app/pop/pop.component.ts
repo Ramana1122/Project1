@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopService } from '../services/pop.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pop',
@@ -29,7 +29,7 @@ export class PopComponent implements OnInit {
 
   Owning1=null;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,private popser:PopService,) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,private popser:PopService,private toaster:ToastrService) {}
 
 
   
@@ -111,7 +111,7 @@ export class PopComponent implements OnInit {
       error:()=>{this.workgroupdata= []}
     });
     this.pop = this.formBuilder.group({
-      checkboxValue: [false] ,
+      GET: [false] ,
       DedalusId: ['', Validators.required],
       EmployeeCode: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       EmployeeName: ['', [Validators.required, Validators.pattern('^[A-Za-z]+$')]],
@@ -137,19 +137,22 @@ export class PopComponent implements OnInit {
   }
   clearForm(): void {
     this.pop.reset();
-    alert("Are you sure?");
+    // alert("Are you sure?");
+    this.toaster.warning("Form Cleared!!");
     // this.toastr.success('Form Cleared')
   }
 
   submitForm(): void {
     if (this.pop.valid) {
-      let formData = this.pop.value;  
+      let formData = this.pop.value; 
+      formData.GET=formData.GET?'True':'False' 
       this.http.post('http://nhsappchna6210.cscidp.net/rdb/api/employee', formData)
         .subscribe(
           response => {
             console.log(this.pop);
             console.log('Success:', response);
-            alert("Success......");  
+            // alert("Success......");  
+            this.toaster.success("Success......")
             this.pop.reset();
             this.pop.value.Owning = null;
             this.pop.value.Unit = null;
@@ -172,7 +175,8 @@ export class PopComponent implements OnInit {
           },
           error => {
             console.error('Error:', error);
-            alert("Not Updated......");
+            // alert("Not Updated......");
+            this.toaster.error("Not Updated......")
           }
         );
     } else {
@@ -185,7 +189,8 @@ export class PopComponent implements OnInit {
       //   }
       // }
   
-      alert("Please fill in the mandatory fields ");
+      // alert("Please fill in the mandatory fields ");
+      this.toaster.warning("Please fill all mandatory fields ")
     }
   }
   
@@ -227,7 +232,7 @@ export class PopComponent implements OnInit {
           this.productgroup=res;
           break;
       default:
-          console.log("It's the weekend!");  
+          console.log("It's wrong input!");  
 
     }
     })

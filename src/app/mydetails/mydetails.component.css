@@ -2,7 +2,7 @@
   padding-top: 100px;
   text-align: left;
   padding-bottom: 0px;
-  margin-left: 120px;
+  margin-left:120px;
 }
 
 .container {
@@ -41,69 +41,17 @@ h4 {
 }
 
 .details-row .label {
-  flex-basis: 50%;
+  flex-basis: 35%;
   text-align: left;
   padding-right: 10px;
   
 }
 
 .details-row .value {
-  flex-basis: 50%;
+  flex-basis: 65%;
   text-align: left;
-  padding-left: 10px;
+  /* margin-left: 10px; */
+  /* padding-left: 10px; */
   font-weight: bold;
+  padding-left: -50px;
 }
-
-
-
-
-
-/* .employee-details-row p {
-  margin-left: 5px;
-}
-
-
-.employee-details-column {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-row-gap: 10px;
-}
-
-.employee-details-column .form-group {
-  margin-bottom: 0;
-}
-.C{
-  font-weight:bold;
- 
-}
-.D{
-  padding-top: 10px;
-}
-
-.employee-details-column label {
-  font-weight: bold;
-}
-h4{
-  text-align: center;
-  font-weight:bold ;
-}
-
-.employee-details-column p {
-  margin-bottom: 5px;
-}
-.card-header{
-  background-color: rgb(50, 122, 169) ;
-  color:white;
-
-}
-.container{
-  margin-top:70px;
-  overflow: auto;
-
-}
-.ram{
-  overflow-y:scroll ;
-  max-height: 96vh;
-  margin-top: 20px;
-  margin-left: 50px;
-} */

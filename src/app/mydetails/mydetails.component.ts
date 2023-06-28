@@ -1,39 +1,48 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpDataService } from '../services/emp-data.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-mydetails',
   templateUrl: './mydetails.component.html',
   styleUrls: ['./mydetails.component.css']
 })
+
 export class MydetailsComponent implements OnInit{
+employeeId : string='';
 
-  employeeId : string='';
-  employee: any;
+employee: any;
 
-  constructor(private employeeService: EmpDataService,private route: ActivatedRoute) {
+dateString:string='';
 
-   }
-  ngOnInit(): void {
-   this.employeeId = this.employeeService.getId();
+myDetails:boolean = false;
 
-      console.log(this.employeeId);
 
-    this.employeeService.getEmployeeById(this.employeeId).subscribe(
-      (data) => {
-        console.log(data);
-        if(data){
-          this.employee = data;
-        }
-       
-      },
-      (error) => {
-        console.error(error);
+
+
+constructor(private employeeService: EmpDataService,private datePipe: DatePipe,private router: Router) {
+ }
+ngOnInit(): void {
+ this.employeeId = this.employeeService.getId();
+ if(this.employeeId=="" ){
+  this.router.navigateByUrl('/login');
+}else{
+    console.log(this.employeeId);
+  this.employeeService.getEmployeeById(this.employeeId).subscribe(
+    (data) => {
+      // console.log(data);
+      if(data){
+        this.employee = data;
       }
-
-    )}
+    },
+    (error) => {
+      console.error(error);
+    }
+  )}
 }
+}
+
   
 
 

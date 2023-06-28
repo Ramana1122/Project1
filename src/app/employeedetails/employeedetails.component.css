@@ -1,40 +1,46 @@
-.card-title{
-    text-align: center;
-    justify-content: center;
-  }
-  button {
-    background-color: rgb(144, 190, 219);
-    color: white;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-  }
-  
-  .row{
-    
-    justify-content: center;
-  }
-  
-  .custom-card {
-    width: 80%;
-    margin: 0 auto;
-  }
-  .card-title {
-    position: relative;
-  }
-  
-  .icon {
-    position: absolute;
-    top: 0;
-    right: 20px;
-    cursor: pointer;
-  }
-  .ram{
-    margin-top: 40px;
-    max-height:90vh;
-    overflow-y:scroll ;
-  }
-  
-  
-  
+.container {
+  margin-top: 0;
+}
+
+.card {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.card-title {
+  color: white;
+  text-align: center;
+}
+
+.card-header {
+  background-color: rgb(50, 122, 169);
+}
+
+.card-body {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+h4 {
+  text-align: center;
+  font-weight: bold;
+}
+
+.details-row {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.details-row .label {
+  flex-basis: 35%;
+  text-align: left;
+  padding-right: 10px;
+}
+
+.details-row .value {
+  flex-basis: 65%;
+  text-align: left;
+  padding-left: -50px;
+  font-weight: bold;
+}

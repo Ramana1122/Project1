@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
   workgroupdata:any[]=[]
   dd:any[]=[];
   tempVar: any;
+  disableLogin:boolean=false;
   
   constructor(private log :LogService,private route:Router,private toastr:ToastrService,private employeeService:EmpDataService) { 
   }
@@ -80,6 +81,7 @@ login(): void {
   // this.toastr.error('Not login');
   
   // console.log('toaster')
+  this.disableLogin = true;
   this.errorEmpId = '';
   this.errorPassword = '';
   localStorage.setItem("userid","Welcome user")
@@ -100,9 +102,15 @@ login(): void {
 
         this.route.navigate(['/admin']);
       }else{
-        this.toastr.success(' Not Login');
+        // if (this.employeeid !== this.employeeid) {
+        //   this.toastr.error('Wrong employee code');
+        // } else if (this.password !== this.password) {
+        //   this.toastr.error('Wrong password');
+        // } else {
+          this.toastr.error('Invalid Username or password');
+        // }
       }
-        console.log(data)
+      console.log(data);
     })
   }
   const storedEmployeeId = sessionStorage.getItem('employeeId');
@@ -154,7 +162,8 @@ let isRetypePassIdEmpty=true;
       else  if(isCurrentPassIdEmpty&&isEmpIdEmpty&&isPassIdEmpty&&isRetypePassIdEmpty){
         let user={
           "EmployeeCode":this.employeeid,
-          "Password":this.newPassword
+          "Password":this.newPassword,
+          "CurrentPassword":this.currentPassword
         }
          this.log.putData(user).subscribe((data)=>{
     
@@ -197,6 +206,7 @@ let isRetypePassIdEmpty=true;
 
 
 onchange(n:any){
+  this.disableLogin=false;
   switch(n){
     case 0:
         this.errorEmpId="";

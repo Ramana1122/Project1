@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center" style="margin-top: 90px;">
+<div class="d-flex justify-content-center" style="margin-top: 90px;" >
 
   <div class="input-group" style="width: 300px;">
 
@@ -6,7 +6,7 @@
 
     <div class="input-group-append">
 
-      <button class="btn btn-primary" type="button" (click)="onSearch()">
+      <button class="btn btn-primary" style="background-color: rgb(50, 122, 169);"color type="button" (click)="onSearch()">
 
         <i class="fa-solid fa-magnifying-glass"></i>
 
@@ -21,10 +21,9 @@
 
 
 
+<div class="ram1" *ngIf=" !isViewSelect && showList && searchClicked && employees.length > 0 &&!isViewSelect">
 
-<div class="ram1" *ngIf="showList && searchClicked && employees.length > 0">
-
-  <div class="ram" style="max-width: 800px;margin-left: 330px; margin-top: 50px;">
+  <div class="ram" style="max-width: 800px;margin-left: 260px; margin-top: 50px;">
 
     <table class="table fixed-header">
 
@@ -56,7 +55,7 @@
 
             <td class="email-id">{{ employee['Employee_MailId'] }}</td>
 
-            <td><a (click)="navigateToEmployeeDetails(employee)" #employee class="btn btn-primary ml-4">View Details</a></td>
+            <td><a (click)="navigateToEmployeeDetails(employee)" #employee class="btn btn-primary btn-sm" style="background-color:rgb(50, 122, 169) ;">View Details</a></td>
 
           </tr>
 
@@ -69,3 +68,5 @@
   </div>
 
 </div>
+
+<app-employee-details-1 *ngIf="isViewSelect" [empId]="employeeID"></app-employee-details-1>

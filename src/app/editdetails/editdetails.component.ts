@@ -164,7 +164,8 @@ export class EditdetailsComponent implements OnInit {
       ManagerName: ['', Validators.required],
       ProductWorkArea: ['', Validators.required],
       WorkGroup: ['', Validators.required],
-      Status: ['']
+      Status: [''],
+      GET:['']
     });
     this.searchEmployee();
   }
@@ -207,8 +208,7 @@ export class EditdetailsComponent implements OnInit {
       this.toastr.error('Invalid Form....');
       return;
     }
-
-    if (this.employee) {
+    if (this.employee) { 
       this.myApiService.updateEmployee(this.employee.EmployeeCode, this.editForm.value).subscribe(() => {
         // Update successful
         console.log('Update successful');
@@ -257,7 +257,7 @@ export class EditdetailsComponent implements OnInit {
         EmployeeCode: this.employee['EmployeeCode'],
         EmployeeName: this.employee['EmployeeName'],
         // DateofJoin: this.employee['DateofJoin'],
-        DateofJoin: this.datePipe.transform(this.employee.DateofJoin, 'dd/MM/yyyy'),
+        DateofJoin: this.datePipe.transform(this.employee.DateofJoin, 'dd-MMM-YYYY'),
         Gender: this.employee['Gender'],
         Location: this.employee['Location'],
         ProductGroup: this.employee['ProductGroup'],
@@ -273,6 +273,7 @@ export class EditdetailsComponent implements OnInit {
         Employee_MailId: this.employee['Employee_MailId'],
         ManagerName: this.employee['ManagerName'],
         ProductWorkArea: this.employee['ProductWorkArea'],
+        GET:this.employee['GET'],
         WorkGroup: this.employee['WorkGroup'],
         Status: this.employee['Status'] || '' // Include the Status field with a default value of ''
       });

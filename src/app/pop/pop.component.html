@@ -4,7 +4,7 @@
       <div class="row classRow">
         <div>
           <div class="title" style="padding-top: 12px;">
-            <p>ADD EMPLOYEE</p>
+            <h4>ADD EMPLOYEE</h4>
           </div>
         </div>
       </div>
@@ -23,7 +23,7 @@
           <div class="form-group">
             <label for="EmployeeCode">Employee Code <span  style="color:red"> *</span></label>
             <input type="text" class="form-control" id="EmployeeCode" formControlName="EmployeeCode" placeholder="Enter Employee Code">
-            <span *ngIf="pop.get('EmployeeCode')?.invalid && pop.get('EmployeeCode')?.touched" class="text-danger">please enter only numerics.</span>
+            <span *ngIf="pop.get('EmployeeCode')?.invalid && pop.get('EmployeeCode')?.touched" class="text-danger">Please Enter only Numerics.</span>
           </div>
         </div>        
       </div>
@@ -32,7 +32,7 @@
           <div class="form-group">
             <label for="EmployeeName">Employee Name<span  style="color:red"> *</span></label>
             <input type="text" class="form-control" id="EmployeeName" formControlName="EmployeeName" placeholder="Enter Employee Name">
-            <span *ngIf="pop.get('EmployeeName')?.invalid && pop.get('EmployeeName')?.touched" class="text-danger">please enter only charecters.</span>
+            <span *ngIf="pop.get('EmployeeName')?.invalid && pop.get('EmployeeName')?.touched" class="text-danger">Please Enter only Charecters.</span>
           </div>
         </div>
         <div class="col-md-6">
@@ -71,7 +71,7 @@
           <div class="form-group">
             <label for="ManagerName"> Manager Name<span  style="color:red"> *</span></label>
             <input type=" ManagerName" class="form-control" id="ManagerName" formControlName="ManagerName" placeholder="Enter Manager Name">           
-            <span *ngIf="pop.get('ManagerName')?.invalid && pop.get('ManagerName')?.touched" class="text-danger">please enter charectars.</span>              
+            <span *ngIf="pop.get('ManagerName')?.invalid && pop.get('ManagerName')?.touched" class="text-danger">Please Enter Charectars.</span>              
           </div>
         </div>
         <div class="col-md-6">
@@ -87,7 +87,7 @@
           <div class="form-group">
             <label for="ManagerCode">Manager Code <span style="color:red"> *</span></label>
             <input type="text" class="form-control" id="ManagerCode" formControlName="ManagerCode" placeholder="Enter Manager Code">
-            <span *ngIf="pop.get('ManagerCode')?.invalid && pop.get('ManagerCode')?.touched" class="text-danger">please enter the numeric values</span>                        
+            <span *ngIf="pop.get('ManagerCode')?.invalid && pop.get('ManagerCode')?.touched" class="text-danger">Please Enter the Numeric Values</span>                        
           </div>          
         </div>
         <div class="col-md-6">
@@ -215,7 +215,7 @@
       </div>      
     <div class="row buttons">
       <div class="col-md-6 alignGetCheck">
-        <label for="graduate engineer">Graduate Engineer?<span> <input type="checkbox" class="chk-box" formControlName="checkboxValue"></span> </label>                                                          
+        <label for="graduate engineer">Graduate Engineer?<span> <input type="checkbox" class="chk-box" formControlName="GET"></span> </label>                                                          
       </div>
       <div class="col-md-6">
         <button type="button" class="btn btn-primary"  (click)="clearForm()">Clear</button>

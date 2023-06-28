@@ -1,10 +1,10 @@
 <div class="ram">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-10">
+      <div class="col-md-11">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Employee Name: {{ employee?.['EmployeeName'] }}</h4>
+            <h4 class="card-title">  {{ employee?.['EmployeeName'] }}</h4>
           </div>
           <div class="card-body">
             <div class="row">
@@ -22,29 +22,28 @@
                   <div class="label">Mail ID</div>
                   <div class="value">{{ employee?.['Employee_MailId'] }}</div>
                 </div>
-                <p class="vertical-line"></p>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-6" >
                 <h4>Job Details</h4>
                 <div class="details-row">
                   <div class="label">Location</div>
-                  <div class="value">{{ employee?.Location || 'unknown' }}</div>
+                  <div class="value1">{{ employee?.Location || 'unknown' }}</div>
                 </div>
                 <div class="details-row">
                   <div class="label">Reporting Manager</div>
-                  <div class="value">{{ employee?.['ManagerName'] }}</div>
+                  <div class="value1">{{ employee?.['ManagerName'] }}</div>
                 </div>
                 <div class="details-row">
                   <div class="label">Product</div>
-                  <div class="value">{{ employee?.Product }}</div>
+                  <div class="value1">{{ employee?.Product }}</div>
                 </div>
                 <div class="details-row">
                   <div class="label">Manager Mail ID</div>
-                  <div class="value">{{ employee?.['ManagerMailId'] }}</div>
+                  <div class="value1">{{ employee?.['ManagerMailId'] }}</div>
                 </div>
                 <div class="details-row">
                   <div class="label">Date Of Joining</div>
-                  <div class="value">{{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</div>
+                  <div class="value1">{{ employee?.['DateofJoin'] | date:'dd-MMM-yyyy' }}</div>
                 </div>
               </div>
             </div>
@@ -54,7 +53,6 @@
     </div>
   </div>
 </div>
-
 
 
 

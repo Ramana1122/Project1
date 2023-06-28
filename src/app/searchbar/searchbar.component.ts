@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
 
- 
+
+
 
 @Component({
 
@@ -24,15 +25,20 @@ export class SearchbarComponent implements OnInit {
 
   employees: Employee[] = [];
 
+ 
+
   showNoEmployeesFound: boolean = false;
 
   searchClicked: boolean = false;
+
+   
 
   searchErrorMessage: string = '';
 
   showList: boolean = false;
 
- 
+
+
 
   constructor(
 
@@ -42,13 +48,15 @@ export class SearchbarComponent implements OnInit {
 
     private toastr: ToastrService
 
-  ) {}
+  ) { }
 
- 
 
-  ngOnInit() {}
 
- 
+
+  ngOnInit() { }
+
+
+
 
   change() {
 
@@ -70,17 +78,26 @@ export class SearchbarComponent implements OnInit {
 
   }
 
- 
+  employeeID: any;
+
+  isViewSelect: boolean = false;
 
   navigateToEmployeeDetails(employee: any) {
 
-    this.router.navigate(['admin/details', employee.EmployeeCode]);
+    // this.router.navigate(['admin/details', employee.EmployeeCode]);
+
+    this.isViewSelect = true;
+
+    this.employeeID = employee.EmployeeCode;
 
   }
 
- 
+
+
 
   onSearch() {
+
+    this.isViewSelect = false;
 
     this.showList = true;
 
@@ -125,8 +142,16 @@ export class SearchbarComponent implements OnInit {
       // Check if the search query consists of only spaces
 
       if (this.searchQuery.trim().length === 0) {
-        
-        this.toastr.warning('Minimum 3 characters are required for search.');
+
+        this.toastr.error('Minimum 3 characters are required for search.');
+
+      }
+
+      else {
+
+        this.searchQuery.length < 3
+
+        this.toastr.error('Minimum 3 characters are required for search.');
 
       }
 
@@ -140,6 +165,7 @@ export class SearchbarComponent implements OnInit {
 
   }
 
- 
+
+
 
 }

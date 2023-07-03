@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopService } from '../services/pop.service';
 import { ToastrService } from 'ngx-toastr';
+import { server } from '../services/allservers';
 
 @Component({
   selector: 'app-pop',
@@ -29,7 +30,7 @@ export class PopComponent implements OnInit {
 
   Owning1=null;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,private popser:PopService,private toaster:ToastrService) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,private popser:PopService,private toaster:ToastrService,private serverService:server) {}
 
 
   
@@ -146,7 +147,7 @@ export class PopComponent implements OnInit {
     if (this.pop.valid) {
       let formData = this.pop.value; 
       formData.GET=formData.GET?'True':'False' 
-      this.http.post('http://nhsappchna6210.cscidp.net/rdb/api/employee', formData)
+      this.http.post(this.serverService.ServerUrls+'employee', formData)
         .subscribe(
           response => {
             console.log(this.pop);

@@ -12,7 +12,7 @@ export class EmpDataService {
   constructor(private http: HttpClient, private serverService:server) {}
 
   getEmployeeById(employeeId: string): Observable<any> {
-    const apiUrl = this.serverService.ServerUrls +'employee/' +'/' + employeeId;
+    const apiUrl = this.serverService.ServerUrls +'employee' +'/' + employeeId;
     return this.http.get(apiUrl);
   }
 
